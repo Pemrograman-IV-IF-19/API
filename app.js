@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 
 app.use('/users', require('./routes/userRoutes'))
 app.use('/kategori', require('./routes/kategoriroutes'))
+app.use('/barang', require('./routes/barangRoutes'))
 
 // app.get("/data-mhs/:npm/:nama", (req, res) => {
 //     res.json({
