@@ -1,30 +1,35 @@
-const express = require('express')
-const app = express()
-const port = 8080
-const mongoose = require('mongoose')
-const dbConfig = require('./config/DbConfig')
+const express = require("express");
+const app = express();
+const port = 8080;
+const mongoose = require("mongoose");
+const dbConfig = require("./config/DbConfig");
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(dbConfig.mongoUrl, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-}).then(() => {
-    console.log("Connect mongodb")
-}).catch(err => {
-    console.log(err)
-})
+mongoose
+	.connect(dbConfig.mongoUrl, {
+		useUnifiedTopology: true,
+		useNewUrlParser: true,
+	})
+	.then(() => {
+		console.log("Connect mongodb");
+	})
+	.catch((err) => {
+		console.log(err);
+	});
 
 app.get("/", (req, res) => {
-    res.json({
-        msg: "Selamat Datang Di API"
-    })
-})
+	res.json({
+		msg: "Selamat Datang Di API",
+	});
+});
 
-app.use('/users', require('./routes/userRoutes'))
-app.use('/kategori', require('./routes/kategoriroutes'))
-app.use('/barang', require('./routes/barangRoutes'))
+app.use("/users", require("./routes/userRoutes"));
+app.use("/kategori", require("./routes/kategoriroutes"));
+app.use("/barang", require("./routes/barangRoutes"));
+app.use("/keranjang", require("./routes/keranjangRoutes"));
+app.use("/transaksi", require("./routes/transaksiRoutes"));
 
 // app.get("/data-mhs/:npm/:nama", (req, res) => {
 //     res.json({
@@ -48,5 +53,5 @@ app.use('/barang', require('./routes/barangRoutes'))
 // })
 
 app.listen(port, () => {
-    console.log("server berjalan di port " + port)
-})
+	console.log("server berjalan di port " + port);
+});
