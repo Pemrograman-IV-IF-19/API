@@ -5,21 +5,10 @@ const transaksiModel = mongoose.Schema({
 	idUser: {
 		type: objectId,
 	},
-	gambarBarang: {
-		type: String,
-	},
-	namaBarang: {
-		type: String,
-	},
-	hargaBarang: {
+	grandTotal: {
 		type: Number,
 	},
-	jumlahBeli: {
-		type: Number,
-	},
-	totalHarga: {
-		type: Number,
-	},
+	detailTransaksi: JSON,
 });
 
 module.exports = mongoose.model("transaksi", transaksiModel);

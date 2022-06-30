@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const controllerTransaksi = require("../controller/transaksiController");
 
-router.post("/inputTransaksi", (req, res) => {
+router.post("/input", (req, res) => {
 	controllerTransaksi
 		.inputTransaksi(req.body)
 		.then((result) => {
@@ -26,6 +26,17 @@ router.get("/getAllTransaksi", (req, res) => {
 router.get("/getTransaksiById/:idTransaksi", (req, res) => {
 	controllerTransaksi
 		.getTransaksiById(req.params.idTransaksi)
+		.then((result) => {
+			res.json(result);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
+});
+
+router.get("/getTransaksiByIdUser/:idUser", (req, res) => {
+	controllerTransaksi
+		.getTransaksiByIdUser(req.params.idUser)
 		.then((result) => {
 			res.json(result);
 		})

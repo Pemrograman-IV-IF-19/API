@@ -25,6 +25,7 @@ app.get("/", (req, res) => {
 	});
 });
 
+app.use("/gambar-barang", express.static("public/images"));
 app.use("/users", require("./routes/userRoutes"));
 app.use("/kategori", require("./routes/kategoriroutes"));
 app.use("/barang", require("./routes/barangRoutes"));
